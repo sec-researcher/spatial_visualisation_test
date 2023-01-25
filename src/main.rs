@@ -26,3 +26,38 @@ fn main() -> Result<(), Box<dyn Error>> {
 
     Ok(())
 }
+
+fn update(wind: &mut DoubleWindow, frame1: &mut Frame, frame2: &mut Frame, flip: &mut u8) {
+    wind.set_color(fltk::enums::Color::from_rgb(255, 255, 255));
+    let img1;
+    let img = img::new("R");
+    unsafe {
+        img1 = fltk::image::RgbImage::from_data(
+            &img.0 .2,
+            img.0 .0 as i32,
+            img.0 .1 as i32,
+            fltk::enums::ColorDepth::Rgba8,
+        )
+        .unwrap();
+    }
+    let img2;
+    unsafe {
+        img2 = fltk::image::RgbImage::from_data(
+            &img.1 .2,
+            img.1 .0 as i32,
+            img.1 .1 as i32,
+            fltk::enums::ColorDepth::Rgba8,
+        )
+        .unwrap();
+    }
+    frame1.set_image(Some(img1));
+    frame1.redraw_label();
+
+    println!("image1 height: {}", img.0 .1);
+    frame2.set_pos(0, frame1.y() + frame1.height() as i32 + 20);
+    frame2.set_image(Some(img2));
+    frame2.redraw_label();
+    println!("frame2 y: {}", frame2.y());
+    *flip = img.2 as u8;
+}
+
