@@ -7,3 +7,9 @@ This task requires you to identify whether the bottom symbol in the box is ident
 
 ![Screenshot from 2023-01-25 16-32-35](https://user-images.githubusercontent.com/7353420/214570308-681a921f-5477-4cd7-9d97-c192fed83add.png)
 
+
+```
+git clone https://github.com/sec-researcher/spatial_visualisation_test.git
+cd spatial_visualisation_test
+cargo run
+```
